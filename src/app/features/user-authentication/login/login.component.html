@@ -1,0 +1,76 @@
+<div class="grid min-h-screen grid-cols-2">
+  <!-- Lado esquerdo -->
+  <div
+    class="flex flex-col items-center justify-center w-full h-full bg-gradient-to-r from-blue-100 to-blue-400"
+  >
+    <img src="/kivo-logo.png" alt="Logo Kivo"/>
+  </div>
+
+  <!-- Lado direito -->
+  <div class="flex flex-col items-center justify-center w-full h-full p-8">
+    <!-- Texto + botão Google -->
+    <div class="flex flex-col items-center mb-8 space-y-6 text-center">
+      <h2 class="text-2xl font-bold leading-snug">
+        Entre na <span class="text-blue-600">Kivo</span> e comece a gerar
+        currículos profissionais de forma automática, sem complicação.
+      </h2>
+
+      <button
+        class="flex items-center justify-center w-full max-w-xs px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50"
+      >
+        <img src="/google-logo.png" alt="Google Logo" class="w-5 h-5 mr-2" />
+        Continuar com o Google
+      </button>
+    </div>
+
+    <!-- Divider OU -->
+    <div class="flex items-center w-full max-w-xs my-6 text-gray-500">
+      <div class="flex-1 border-t border-gray-300"></div>
+      <span class="px-3 text-sm">ou</span>
+      <div class="flex-1 border-t border-gray-300"></div>
+    </div>
+
+    <!-- Formulário -->
+    <form class="flex flex-col w-full max-w-xs space-y-4">
+      <div>
+        <label for="email" class="block mb-1 text-sm font-medium text-gray-700"
+          >Email</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+      </div>
+
+      <div>
+        <label
+          for="password"
+          class="block mb-1 text-sm font-medium text-gray-700"
+          >Senha</label
+        >
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full px-4 py-2 text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700"
+      >
+        Login
+      </button>
+    </form>
+
+    <p class="mt-6 text-sm text-gray-600">
+      Ainda não tem uma conta?
+      <a href="#" class="text-blue-600 hover:underline">Registre-se</a>
+    </p>
+  </div>
+</div>
