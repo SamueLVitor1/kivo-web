@@ -1,0 +1,47 @@
+:host { display:block; position:absolute; inset:0; }
+
+.stage{ position:absolute; inset:0; overflow:hidden; isolation:isolate; }
+
+/* base bem aparente */
+.bg{
+  position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(120% 100% at 0% 0%, rgba(96,165,250,.6) 0%, transparent 55%),
+    radial-gradient(120% 100% at 100% 10%, rgba(56,189,248,.55) 0%, transparent 60%),
+    linear-gradient(180deg, #2563eb 0%, #0b4ffd 100%);
+}
+
+/* spots mais visíveis */
+.spot{
+  position:absolute; border-radius:50%;
+  filter: blur(32px);
+  opacity:.75;                      /* ↑ */
+  mix-blend-mode:screen;
+  will-change: transform;
+  animation: floatY linear infinite, floatX ease-in-out infinite;
+  background: radial-gradient(closest-side, rgba(255,255,255,.95), rgba(255,255,255,0) 70%);
+}
+
+/* tamanhos responsivos e posições seguras */
+.s1{ width:clamp(20vmin, 28vmin, 48vmin); height:clamp(20vmin, 28vmin, 48vmin); left:6%;  top:55%; animation-duration:26s,18s; }
+.s2{ width:clamp(18vmin, 26vmin, 42vmin); height:clamp(18vmin, 26vmin, 42vmin); left:62%; top:12%; animation-duration:30s,20s; }
+.s3{ width:clamp(24vmin, 34vmin, 56vmin); height:clamp(24vmin, 34vmin, 56vmin); left:58%; top:68%; animation-duration:34s,22s;
+     background: radial-gradient(closest-side, rgba(173,233,255,.95), rgba(173,233,255,0) 70%); }
+
+/* grain sutil (pode remover se quiser liso) */
+.grain{
+  position:absolute; inset:-100px; z-index:2; pointer-events:none;
+  opacity:.08; mix-blend-mode:soft-light;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  animation: grainMove 8s linear infinite;
+}
+
+/* logo opcional no centro da área */
+.logo{ position:absolute; inset:0; margin:auto; z-index:3; width:min(34%, 200px); height:auto; filter: drop-shadow(0 6px 18px rgba(0,0,0,.25)); pointer-events:none; }
+
+@keyframes floatY { 0%{transform:translateY(0)} 50%{transform:translateY(-12%)} 100%{transform:translateY(0)} }
+@keyframes floatX { 0%{transform:translateX(0)} 50%{transform:translateX(8%)} 100%{transform:translateX(0)} }
+@keyframes grainMove { 0%{transform:translate3d(0,0,0)} 100%{transform:translate3d(-140px,-140px,0)} }
+
+@media (prefers-reduced-motion: reduce){ .spot,.grain{ animation:none; } }
