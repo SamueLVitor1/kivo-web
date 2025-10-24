@@ -42,3 +42,24 @@ testem.log
 Thumbs.db
 
 /src/environments/environments.ts
+
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+/.eslintcache
+/.nx
+/.husky/_/
+.angular/
+.angular/cache/
+
+/coverage/
+karma-results.html
+junit.xml
+test-results.xml
+
+/.env
+/.env.local
+/.env.*.local
+/src/environments/environment.*.ts
+/src/environments/environment.local.ts
