@@ -1,8 +1,6 @@
 <div class="grid min-h-screen grid-cols-2">
   <!-- Lado esquerdo -->
-  <div
-    class="relative flex flex-col items-center justify-center w-full h-full overflow-hidden"
-  >
+  <div class="relative flex flex-col items-center justify-center w-full h-full overflow-hidden">
     <app-logo-ambient></app-logo-ambient>
     <img src="/kivo-logo.png" alt="Logo Kivo" class="z-10" />
   </div>
@@ -50,6 +48,47 @@
         />
       </div>
 
+      @if (!isLoginMode) {
+        <div>
+          <label for="password" class="block mb-1 text-sm font-medium text-gray-700"
+            >Confirmar Senha</label
+          >
+          <input
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="password" class="block mb-1 text-sm font-medium text-gray-700">Nome</label>
+          <input
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="password" class="block mb-1 text-sm font-medium text-gray-700">Idade</label>
+          <input
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="">Gênero</label>
+          <input type="radio" id="huey" name="drone" value="m" checked />
+          <label for="huey">Masculino</label>
+          <input type="radio" id="huey" name="drone" value="f" checked />
+          <label for="huey">Feminino</label>
+          <input type="radio" id="huey" name="drone" value="pf" checked />
+          <label for="huey">Prefiro Não Informar</label>
+
+          <input type="radio" id="huey" name="drone" value="pf" checked />
+          <label for="huey">Outro</label>
+        </div>
+      }
+
       <button
         type="submit"
         class="w-full px-4 py-2 text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700"
@@ -58,9 +97,20 @@
       </button>
     </form>
 
-    <p class="mt-6 text-sm text-gray-600">
-      Ainda não tem uma conta?
-      <a href="#" class="text-blue-600 hover:underline">Registre-se</a>
-    </p>
+    @if (isLoginMode) {
+      <p class="mt-6 text-sm text-gray-600">
+        Ainda não tem uma conta?
+        <span class="text-blue-600 hover:underline cursor-pointer" (click)="switchAuthMode()"
+          >Registre-se</span
+        >
+      </p>
+    } @else {
+      <p class="mt-6 text-sm text-gray-600">
+        Já tem uma conta?
+        <span class="text-blue-600 hover:underline cursor-pointer" (click)="switchAuthMode()"
+          >Login</span
+        >
+      </p>
+    }
   </div>
 </div>
