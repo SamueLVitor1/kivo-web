@@ -5,7 +5,7 @@ import { GoogleAuthService } from '../../../../core/auth/google-auth';
 @Component({
   selector: 'app-google-button',
   standalone: true,
-  template: `<div #btn style="width:100%"></div>`,
+  template: `<div #btn style="width:100%,"></div>`,
 })
 export class GoogleButtonComponent implements OnInit {
   @ViewChild('btn', { static: true }) btn!: ElementRef<HTMLDivElement>;
