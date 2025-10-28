@@ -81,7 +81,7 @@
           }
 
           <!-- Submit -->
-          <button mat-flat-button color="primary" type="submit" class="mt-2 w-full !h-11 !rounded-xl">
+          <button mat-flat-button color="primary" type="button" class="mt-2 w-full !h-11 !rounded-xl" (click)="onLoginSuccess()">
             @if (isLoginMode) { Login } @else { Criar conta }
           </button>
         </form>

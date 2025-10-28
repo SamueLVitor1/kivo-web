@@ -1,6 +1,8 @@
 /* 1️⃣ SEMPRE no topo — antes de qualquer outra regra */
 @use '@angular/material' as mat;
 
+@import 'animate.css';
+
 /* 2️⃣ Tema do Material (já vem configurado pelo Angular CLI) */
 html {
   @include mat.theme((

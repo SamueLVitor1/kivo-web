@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { GoogleButtonComponent } from '../components/google-button/google-button';
 import { LogoAmbient } from '../components/logo-ambient/logo-ambient';
@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
+import { Feedback } from '../../../core/services/feedback';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,8 @@ import { MatDividerModule } from '@angular/material/divider';
 export class LoginComponent implements OnInit {
   typeForm: 'login' | 'register' = 'login';
 
+  private feedback = inject(Feedback);
+
   constructor() {}
 
   ngOnInit() {}
@@ -41,6 +44,10 @@ export class LoginComponent implements OnInit {
     // EXEMPLO: enviar para o seu backend validar e trocar por sessão própria
     // this.http.post('/api/auth/google', { idToken }).subscribe(...)
     localStorage.setItem('kivo_user_token_google', idToken);
+  }
+
+  onLoginSuccess() {
+    this.feedback.success('Login efetuado com sucesso!');
   }
 
   get isLoginMode(): boolean {
