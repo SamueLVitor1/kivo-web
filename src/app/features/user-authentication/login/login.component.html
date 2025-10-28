@@ -1,8 +1,8 @@
 <div class="grid min-h-screen grid-cols-1 lg:grid-cols-2 bg-slate-50 text-slate-900">
   <!-- Lado esquerdo: hero azul suave -->
   <div
-    class="relative hidden lg:flex items-center justify-center overflow-hidden bg-[radial-gradient(120%_90%_at_0%_0%,rgba(37,99,235,.14),transparent_55%),radial-gradient(110%_85%_at_100%_20%,rgba(14,165,233,.12),transparent_50%),linear-gradient(180deg,#f8fafc,#f9fbff)]"
-  >
+    class="relative hidden lg:flex items-center justify-center overflow-hidden
+           bg-[radial-gradient(120%_90%_at_0%_0%,rgba(37,99,235,.14),transparent_55%),radial-gradient(110%_85%_at_100%_20%,rgba(14,165,233,.12),transparent_50%),linear-gradient(180deg,#f8fafc,#f9fbff)]">
     <img src="/kivo-logo.png" alt="Logo Kivo" class="z-10 drop-shadow-sm" />
   </div>
 
@@ -11,16 +11,13 @@
     <div class="w-full max-w-md">
       <!-- Headline -->
       <h1 class="text-center text-[22px] sm:text-2xl font-semibold leading-snug tracking-tight">
-        Entre na <span class="text-blue-600">Kivo</span> e comece a gerar currículos profissionais
-        de forma automática, sem complicação.
+        Entre na <span class="text-blue-600">Kivo</span> e comece a gerar currículos profissionais sem complicação.
       </h1>
 
       <!-- Card -->
-      <div
-        class="mt-6 rounded-2xl border border-slate-200 bg-white/90 shadow-[0_1px_2px_rgba(0,0,0,.03)] backdrop-blur p-5 sm:p-6"
-      >
-        <!-- Google -->
+      <div class="mt-6 rounded-2xl border border-slate-200 bg-white/90 shadow-sm backdrop-blur p-5 sm:p-6">
 
+        <!-- Google -->
         <div class="w-full flex justify-center">
           <div class="w-full max-w-xs">
             <app-google-button (signedIn)="onGoogleSignIn($event)"></app-google-button>
@@ -28,155 +25,64 @@
         </div>
 
         <!-- Divider -->
-        <div class="my-6 flex items-center gap-3 text-slate-400 text-xs">
-          <div
-            class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent"
-          ></div>
-          <span>ou</span>
-          <div
-            class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent"
-          ></div>
-        </div>
+        <mat-divider class="!my-6"></mat-divider>
+        <div class="text-center text-xs text-slate-400 -mt-5 mb-5">ou</div>
 
         <!-- Form -->
         <form class="space-y-4">
           <!-- Email -->
-          <div class="space-y-1.5">
-            <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
-            <div class="relative">
-              <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2">
-                <!-- lucide: mail -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4.5 w-4.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M3 7l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </span>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                class="w-full rounded-lg border border-slate-300 bg-white px-10 py-2.5 text-sm shadow-sm outline-none ring-0 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-                placeholder="voce@exemplo.com"
-              />
-            </div>
-          </div>
+          <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+            <mat-icon matPrefix class="mr-2">mail</mat-icon>
+            <input matInput type="email" placeholder="voce@exemplo.com" required />
+          </mat-form-field>
 
           <!-- Senha -->
-          <div class="space-y-1.5">
-            <label for="password" class="block text-sm font-medium text-slate-700">Senha</label>
-            <div class="relative">
-              <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2">
-                <!-- lucide: lock -->
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4.5 w-4.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M12 11V7a4 4 0 10-8 0v4m12 0h4a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6a2 2 0 012-2h10z"
-                  />
-                </svg>
-              </span>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                class="w-full rounded-lg border border-slate-300 bg-white px-10 py-2.5 text-sm shadow-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-              />
-            </div>
-          </div>
+          <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+            <mat-icon matPrefix class="mr-2">lock</mat-icon>
+            <input matInput type="password" required placeholder="Sua senha" />
+            <button mat-icon-button matSuffix type="button" aria-label="Mostrar senha">
+              <mat-icon>visibility</mat-icon>
+            </button>
+          </mat-form-field>
 
           <!-- Campos extras no Register -->
           @if (!isLoginMode) {
             <div class="space-y-4">
-              <div class="space-y-1.5">
-                <label for="confirm" class="block text-sm font-medium text-slate-700"
-                  >Confirmar Senha</label
-                >
-                <input
-                  id="confirm"
-                  type="password"
-                  required
-                  class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm shadow-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-                />
-              </div>
+              <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                <mat-icon matPrefix class="mr-2">lock</mat-icon>
+                <input matInput type="password" required placeholder="Confirmar Senha"/>
+              </mat-form-field>
 
-              <div class="space-y-1.5">
-                <label for="nome" class="block text-sm font-medium text-slate-700">Nome</label>
-                <input
-                  id="nome"
-                  required
-                  class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm shadow-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-                />
-              </div>
+              <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                <mat-icon matPrefix class="mr-2">badge</mat-icon>
+                <input matInput required placeholder="Nome"/>
+              </mat-form-field>
 
-              <div class="space-y-1.5">
-                <label for="idade" class="block text-sm font-medium text-slate-700">Idade</label>
-                <input
-                  id="idade"
-                  type="number"
-                  min="0"
-                  class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm shadow-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-                />
-              </div>
+              <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic">
+                <mat-icon matPrefix class="mr-2">calendar_today</mat-icon>
+                <input matInput type="number" min="0" placeholder="Idade"/>
+              </mat-form-field>
 
-              <!-- Gênero: segmented -->
-              <fieldset class="space-y-2">
-                <legend class="text-sm font-medium text-slate-700">Gênero</legend>
-                <div class="grid grid-cols-2 gap-2">
-                  <label
-                    class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm hover:bg-slate-50"
-                  >
-                    <input type="radio" name="genero" value="m" class="accent-blue-600" /> Masculino
-                  </label>
-                  <label
-                    class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm hover:bg-slate-50"
-                  >
-                    <input type="radio" name="genero" value="f" class="accent-blue-600" /> Feminino
-                  </label>
-                  <label
-                    class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm hover:bg-slate-50"
-                  >
-                    <input type="radio" name="genero" value="ni" class="accent-blue-600" /> Prefiro
-                    não informar
-                  </label>
-                  <label
-                    class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm hover:bg-slate-50"
-                  >
-                    <input type="radio" name="genero" value="outro" class="accent-blue-600" /> Outro
-                  </label>
-                </div>
-              </fieldset>
+              <!-- Gênero -->
+              <div>
+                <div class="text-sm font-medium text-slate-700 mb-2">Gênero</div>
+                <mat-radio-group class="grid grid-cols-2 gap-2">
+                  <mat-radio-button class="rounded-lg border border-slate-300 px-3 py-2 bg-white"
+                                    value="m">Masculino</mat-radio-button>
+                  <mat-radio-button class="rounded-lg border border-slate-300 px-3 py-2 bg-white"
+                                    value="f">Feminino</mat-radio-button>
+                  <mat-radio-button class="rounded-lg border border-slate-300 px-3 py-2 bg-white"
+                                    value="ni">Prefiro não informar</mat-radio-button>
+                  <mat-radio-button class="rounded-lg border border-slate-300 px-3 py-2 bg-white"
+                                    value="outro">Outro</mat-radio-button>
+                </mat-radio-group>
+              </div>
             </div>
           }
 
           <!-- Submit -->
-          <button
-            type="submit"
-            class="mt-2 w-full rounded-lg bg-blue-600 px-4 py-2.5 text-white text-sm font-medium shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
-          >
-            @if (isLoginMode) {
-              Login
-            } @else {
-              Criar conta
-            }
+          <button mat-flat-button color="primary" type="submit" class="mt-2 w-full !h-11 !rounded-xl">
+            @if (isLoginMode) { Login } @else { Criar conta }
           </button>
         </form>
 
@@ -184,14 +90,10 @@
         <p class="mt-5 text-center text-sm text-slate-600">
           @if (isLoginMode) {
             Ainda não tem uma conta?
-            <span class="text-blue-600 hover:underline cursor-pointer" (click)="switchAuthMode()"
-              >Registre-se</span
-            >
+            <span class="text-blue-600 hover:underline cursor-pointer" (click)="switchAuthMode()">Registre-se</span>
           } @else {
             Já tem uma conta?
-            <span class="text-blue-600 hover:underline cursor-pointer" (click)="switchAuthMode()"
-              >Login</span
-            >
+            <span class="text-blue-600 hover:underline cursor-pointer" (click)="switchAuthMode()">Login</span>
           }
         </p>
       </div>

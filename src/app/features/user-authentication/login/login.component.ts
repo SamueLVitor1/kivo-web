@@ -4,11 +4,28 @@ import { GoogleButtonComponent } from '../components/google-button/google-button
 import { LogoAmbient } from '../components/logo-ambient/logo-ambient';
 import { CommonModule } from '@angular/common';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDividerModule } from '@angular/material/divider';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [MatButtonModule, GoogleButtonComponent, LogoAmbient, CommonModule],
+  imports: [
+    MatButtonModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatRadioModule,
+    MatDividerModule,
+    GoogleButtonComponent,
+    LogoAmbient,
+    CommonModule,
+  ],
 })
 export class LoginComponent implements OnInit {
   typeForm: 'login' | 'register' = 'login';
